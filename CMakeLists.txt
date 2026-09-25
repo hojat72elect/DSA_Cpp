@@ -16,6 +16,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(StackTests tests/StackTests.cpp src/Stack.hpp)
+target_include_directories(StackTests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_link_libraries(StackTests GTest::gtest GTest::gtest_main)
 include(GoogleTest)
 gtest_discover_tests(StackTests)
