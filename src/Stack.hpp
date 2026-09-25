@@ -49,4 +49,8 @@ public:
 
         return _elements.back();
     }
+
+    void clear() noexcept {
+        _elements.clear();
+    }
 };
