@@ -1,12 +1,23 @@
+#include <cassert>
 #include <iostream>
 
-int main() {
-    constexpr auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+#include "Stack.hpp"
 
-    for (int i = 1; i <= 5; i++) {
-        std::cout << "i = " << i << std::endl;
-    }
+int main() {
+    Stack<int> sut;
+    assert(sut.isEmpty());
+    assert(sut.length() ==0);
+
+    sut.push(10);
+    sut.push(20);
+    assert(!sut.isEmpty());
+    assert(sut.length()==2);
+    assert(sut.peek()==20);
+    assert(sut.pop() == 20);
+    assert(sut.pop() == 10);
+    assert(sut.isEmpty());
+
+    std::cout << "[PASS] Basic Operations\n";
 
     return 0;
 }
