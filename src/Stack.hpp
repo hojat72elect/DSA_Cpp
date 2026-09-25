@@ -1,6 +1,3 @@
-#ifndef DSA_STACK_H
-#define DSA_STACK_H
-
 #pragma once
 #include <stdexcept>
 #include <vector>
@@ -8,7 +5,7 @@
 template<typename T>
 class Stack {
 private:
-    std::pmr::vector<T> _elements;
+    std::vector<T> _elements;
 
 public:
     void push(const T &value) {
@@ -27,12 +24,14 @@ public:
         return _elements.size();
     }
 
-    void pop() {
+    T pop() {
         if (isEmpty()) {
             throw std::out_of_range("Cannot pop from an empty stack!");
         }
 
+        T result = std::move(_elements.back());
         _elements.pop_back();
+        return result;
     }
 
     T &peek() {
@@ -43,7 +42,7 @@ public:
         return _elements.back();
     }
 
-    const T& peek() const {
+    const T &peek() const {
         if (isEmpty()) {
             throw std::out_of_range("Cannot peek into an empty stack!");
         }
@@ -51,6 +50,3 @@ public:
         return _elements.back();
     }
 };
-
-
-#endif //DSA_STACK_H
