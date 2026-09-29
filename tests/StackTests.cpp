@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include "Stack.hpp"
 
-
 class StackTests : public ::testing::Test {
 protected:
     Stack<int> intStack;

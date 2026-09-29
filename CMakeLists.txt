@@ -4,7 +4,7 @@ project(DSA_Cpp)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(DSA_Cpp src/main.cpp
-        src/Stack.hpp)
+        src/Stack.hpp src/Queue.hpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -20,3 +20,8 @@ target_include_directories(StackTests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_link_libraries(StackTests GTest::gtest GTest::gtest_main)
 include(GoogleTest)
 gtest_discover_tests(StackTests)
+
+add_executable(QueueTests tests/QueueTests.cpp src/Queue.hpp)
+target_include_directories(QueueTests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_link_libraries(QueueTests GTest::gtest GTest::gtest_main)
+gtest_discover_tests(QueueTests)
